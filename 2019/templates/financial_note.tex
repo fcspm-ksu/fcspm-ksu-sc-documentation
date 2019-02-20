@@ -1,0 +1,79 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=1cm, left=4cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+
+% Абзацный отступ
+%\parindent=1.25cm
+
+% Заголовок
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ КОМП'ЮТЕРНИХ НАУК, ФІЗИКИ ТА МАТЕМАТИКИ
+\parskip=-0.2cm\par\large СТУДЕНТСЬКА РАДА ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+
+% Розписка
+\newcommand{\note}{
+\parindent=0cm
+\begin{center}
+\heading
+\vspace{\baselineskip}
+\textbf{РОЗПИСКА}
+\end{center}
+
+Я, \hrulefill (ПІБ),
+
+\hrulefill (посада)
+
+отримав(-ла) від \hrulefill (ПІБ),
+
+\hrulefill (посада)
+
+гроші у розмірі \hrulefill (\hrulefill\hrulefill\hrulefill),
+
+що мають піти на \hrulefill.
+
+\bigskip\bigskip\bigskip
+
+\hrulefill\hrulefill (дата)
+\hrulefill (підпис отримувача)
+\hrulefill (підпис благодійника)
+}
+
+
+\begin{document}
+
+\note
+
+\vfill\dotfill
+
+\note
+
+\vfill\dotfill
+
+\note
+
+\end{document}
+
