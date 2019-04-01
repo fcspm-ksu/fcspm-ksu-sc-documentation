@@ -1,0 +1,431 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+	draft
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=1cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+
+% Абзацный отступ
+\parindent=1.25cm
+% ----------------------------------------------------------------------------
+% ---------------------------HEADING------------------------------------------
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ ФІЗИКИ, МАТЕМАТИКИ ТА ІНФОРМАТИКИ
+\parskip=-0.2cm\par\large СТУДЕНТСЬКА РАДА ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+% ----------------------------------------------------------------
+% ---------------------------REQUISITES------------------------------------------
+\newcommand{\Requisites}[4]{\par\noindent
+\begin{minipage}[t]{80mm}
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent\textbf{№#1 від #2}}
+	\end{minipage}
+	\par	
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent #3}	
+	\end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{60mm}
+	\par\noindent #4
+\end{minipage}
+}
+% ---------------------------------------------------------------------
+% ---------------------------PROTOCOL----------------------------------
+\newcommand{\Attendees}[1]{{\par\noindent ПРИСУТНІ: \par #1}}	
+\newcommand{\Invented}[1]{{\par\noindent ЗАПРОШЕНІ: \par #1}}	
+
+\newcommand{\topic}[1]{\item #1}
+\newenvironment{protocolAgenda}
+	{\bigskip\par\noindent ПОРЯДОК ДЕННИЙ:
+		\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]}
+	{\end{enumerate}}
+	
+\newcommand{\protocolVoting}[3]{
+	\par Результати голосування: <<за>> -- #1; <<проти>> -- #2; <<утримались>> -- #3.}
+
+\newcounter{ProtocolItemizator}
+\setcounter{ProtocolItemizator}{1}
+
+\newcommand{\protocolItem}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\ifthenelse{\equal{#2}{}}{}{\noindent
+	\par\noindent ВИСТУПИЛИ: \par #2}
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+% ---------------------------------------------------------------------
+% ---------------------------SIGNS----------------------------------
+\newcommand{\sign}[2]{
+	\bigskip\par\noindent
+	\begin{minipage}[b]{70mm}#1\end{minipage}	\hfill
+	\begin{minipage}[b]{50mm}#2\end{minipage}	\par	}
+	
+\newcommand{\signEqualProof}[3]{
+	\bigskip\vfill
+	\par\noindent #1
+	\par\noindent Згідно з оригіналом
+	\sign{#2}{#3}\vfill}
+	
+\newcommand{\writerTel}[2]{
+	\vfill\scriptsize\parindent=-0.5mm
+	\par\noindent #1
+	\par\noindent #2}
+% ---------------------------------------------------------------------
+% ---------------------------FOR REQUEST EXTRACT------------------------------
+\newcommand{\groupElement}[6]{\vbox{
+\par\noindent\hrulefill
+\par\noindent {
+\scriptsize На {\footnotesize \textbf{#4}} \hfill з заяви №#1 від #2  \hfill <<#3>> \hfill \textit{Згоден {\tiny /підпис/} Кузьмич~В.І.}}
+\par\noindent \textbf{#5} група: #6}}
+% ----------------------------------------------------------------------------
+% ---------------------------------------------------------------------
+\setlength{\multicolsep}{0ex}
+\begin{document}
+\pagestyle{empty}
+\heading
+\Requisites
+{6}
+{06 грудня 2017 г.}
+{}{\hfill\bfseries  м. Херсон}
+
+\begin{center}\textbf{ПРОТОКОЛ}\end{center}
+
+\par\noindent Голова:~Шувалов А.К.
+\par\noindent Секретар:~Сенчишен Д.О.
+
+\Attendees{
+Бродовський~А.А.,
+Вовчанчина~Т.І.,
+%Дубина~Н.О.,
+%Іванова~О.В.,
+Лапік~С.В.,
+Овчаренко~В.О.,
+Петренко~Г.С.,
+Полiщук~А.В.,
+Сікелінда~М.О.,
+Соловйова~А.О.,
+Тарасюк~А.О.,
+Фіалковська~Л.В.,
+Чебан~В.А.
+(13 із 15).}
+
+\Invented{
+капітан команди <<Що? Де? Коли?>> факультету Заобурний~В.В.;
+
+заступник голови сектору розвитку спортивної дiяльностi Варава~О.О.}
+
+\begin{protocolAgenda}
+\topic{Про участь студентів факультету у громадському житті, культурно\,-\,мистецьких та спортивних заходах, студентському самоврядуванні.}
+\topic{Про нагородження студентів грамотами за активну участь у громадському житті факультету.}
+\topic{Про роботу стипендіальної комісії факультету.}
+\end{protocolAgenda}
+
+\protocolItem
+{Шувалова А.К. про участь студентів факультету фізики, математики та інформатики Херсонського державного університету у громадському житті факультету, культурно-мистецьких та спортивних заходах, студентському самоврядуванні.}
+{члени ради та запрошені з доповідями про участь студентів у заходах, що знаходяться в рамках їх компетенції.}
+{ 
+невичерпні списки заходів, органів та колективів, що проводились або діяли протягом перхого семестру 2017/2018~н.р., та їх учасників.
+
+\begin{enumerate}[label=\Roman*.]
+
+
+\item \begin{multicols}{2}[Артисти театру тіней факультету:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Головачова А.І.\hfill --- група 9-111
+\item Стельмах Ю.О.\hfill --- група 9-111
+\item Овчаренко В.О.\hfill --- група 9-121
+\item Фіалковська Л.В.\hfill --- група 9-121
+\item Тарасюк А.О.\hfill --- група 9-131
+\item Петренко Г.С.\hfill --- група 9-132
+\item Болокан В.А.\hfill --- група 9-241
+\item Чебан В.А.\hfill --- група 9-331
+\item Гейнц Г.А.\hfill --- група 9-141М
+\item Щербюк В.С.\hfill --- група 9-211М
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Організатори святкової ярмарки на факультеті до сторіччя ХДУ:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Лапік С.В.\hfill --- група 9-221
+\item Шувалов А.К.\hfill --- група 9-241
+\item Іванова О.В.\hfill --- група 9-331
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Організатори фестивалю <<Арбузник~--- 2017>>:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Барабаш А.Ю.\hfill --- група 9-241
+\item Шувалов А.К.\hfill --- група 9-241
+\item Іванова О.В.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Ліщук Т.А.\hfill --- група 9-431
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Учасники профорієнтаційних заходів до сторіччя ХДУ:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Височенко Г.А.\hfill --- група 9-111
+\item Головачова А.І.\hfill --- група 9-111
+\item Овчаренко В.О.\hfill --- група 9-121
+\item Іванова О.В.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Організатори фестивалю мистецтв <<Дебют~--- 2017>>]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Лапік С.В.\hfill --- група 9-221
+\item Барабаш А.Ю.\hfill --- група 9-241
+\item Корзун В.В.\hfill --- група 9-241
+\item Шувалов А.К.\hfill --- група 9-241
+\item Зотова Т.С.\hfill --- група 9-321
+\item Поліщук А.В.\hfill --- група 9-321
+\item Давидок О.Ю.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Фру С.Н.\hfill --- група 9-431
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Призери VІІ Дня спорту ХДУ:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Височенко Г.А.\hfill --- група 9-111
+\item Головачова А.І.\hfill --- група 9-111
+\item Васильцова К.Ю.\hfill --- група 9-311
+\item Кошеварова А.О.\hfill --- група 9-321
+\item Варава О.О.\hfill --- група 9-331
+\item Чернишев Л.Л.\hfill --- група 9-331
+\item Франич А.В.\hfill --- група 9-411
+\item Сівцев В.Ю.\hfill --- група 9-431
+\item Леус А.В.\hfill --- група 9-211М
+\item Шевчук О.М.\hfill --- група 9-241М
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Учасники святкового концерту до Дня знань:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Іванова О.В.\hfill --- група 9-331
+\item Фру С.Н.\hfill --- група 9-431
+\item Щербюк В.С.\hfill --- група 9-211М
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Учасники фестивалю мистецтв <<Дебют~--- 2017>>:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- група 9-111
+\item Височенко Г.А.\hfill --- група 9-111
+\item Головачова А.І.\hfill --- група 9-111
+\item Л’яна К.О.\hfill --- група 9-111
+\item Лукавий С.В.\hfill --- група 9-111
+\item Магурян Н.Д.\hfill --- група 9-111
+\item Сосевич О.В.\hfill --- група 9-111
+\item Стельмах Ю.О.\hfill --- група 9-111
+\item Толкачова А.С.\hfill --- група 9-111
+\item Барболіна А.С.\hfill --- група 9-121
+\item Бевзенко О.Р.\hfill --- група 9-121
+\item Божко О.О.\hfill --- група 9-121
+\item Гаран І.О.\hfill --- група 9-121
+\item Гошкович С.В.\hfill --- група 9-121
+\item Карпенко К.В.\hfill --- група 9-121
+\item Ковальчук О.О.\hfill --- група 9-121
+\item Овдійчук М.С.\hfill --- група 9-121
+\item Овчаренко В.О.\hfill --- група 9-121
+\item Соловйова А.О.\hfill --- група 9-121
+\item Тімченко М.О.\hfill --- група 9-121
+\item Фіалковська Л.В.\hfill --- група 9-121
+\item Батуашвілі Е..\hfill --- група 9-131
+\item Капустніков Л.С.\hfill --- група 9-131
+\item Козлов Є.С.\hfill --- група 9-131
+\item Коржиневський Д.С.\hfill --- група 9-131
+\item Лапшій О.М.\hfill --- група 9-131
+\item Молибога О.С.\hfill --- група 9-131
+\item Тарасюк А.О.\hfill --- група 9-131
+\item Чертушкін Р.Є.\hfill --- група 9-131
+\item Петренко Г.С.\hfill --- група 9-132
+\item Благій А.І.\hfill --- група 9-141
+\item Воропаєва І.В.\hfill --- група 9-141
+\item Караван О.О.\hfill --- група 9-141
+\item Ковальчук Ю.С.\hfill --- група 9-141
+\item Корнієнко О.М.\hfill --- група 9-141
+\item Кузьменко К.О.\hfill --- група 9-141
+\item Микуленко К.І.\hfill --- група 9-141
+\item Петров О.В.\hfill --- група 9-141
+\item Романенко В.М.\hfill --- група 9-141
+\item Саригіна А.О.\hfill --- група 9-141
+\item Цуркан А.Ф.\hfill --- група 9-141
+\item Жура О.О.\hfill --- група 9-151
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Учасники флешмобу до сторіччя ХДУ:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- група 9-111
+\item Височенко Г.А.\hfill --- група 9-111
+\item Барболіна А.С.\hfill --- група 9-121
+\item Бевзенко О.Р.\hfill --- група 9-121
+\item Гаран І.О.\hfill --- група 9-121
+\item Гошкович С.В.\hfill --- група 9-121
+\item Ковальчук О.О.\hfill --- група 9-121
+\item Романенко В.М.\hfill --- група 9-141
+\item Лапік С.В.\hfill --- група 9-221
+\item Човник А.В.\hfill --- група 9-221
+\item Анедченко Є.В.\hfill --- група 9-311
+\item Іванова О.В.\hfill --- група 9-331
+\item Пулінець А.Ю.\hfill --- група 9-331
+\item Кужелюк Н.І.\hfill --- група 9-431
+\item Ткаченко І.А.\hfill --- група 9-431
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Члени команди <<Що? Де? Коли?>> факультету:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Заобурний В.В.\hfill --- група 9-231
+\item Гуцу А.М.\hfill --- група 9-251
+\item Сінолуп О.Ю.\hfill --- група 9-321
+\item Воробйов Є.А.\hfill --- група 9-331
+\item Левашова К.І.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Грінченко В.Ю.\hfill --- група 9-431
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Члени ради наукового товариства студентів, аспірантів, докторантів та молодих учених факультету:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Сікелінда М.О.\hfill --- група 9-251
+\item Сенчишен Д.О.\hfill --- група 9-331
+\end{enumerate}
+\end{multicols}
+
+
+\item \begin{multicols}{2}[Члени студентської ради факультету:]
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\arabic*.]
+\item Овчаренко В.О.\hfill --- група 9-121
+\item Соловйова А.О.\hfill --- група 9-121
+\item Фіалковська Л.В.\hfill --- група 9-121
+\item Тарасюк А.О.\hfill --- група 9-131
+\item Петренко Г.С.\hfill --- група 9-132
+\item Бродовський А.А.\hfill --- група 9-141
+\item Лапік С.В.\hfill --- група 9-221
+\item Вовчанчина Т.І.\hfill --- група 9-232
+\item Шувалов А.К.\hfill --- група 9-241
+\item Сікелінда М.О.\hfill --- група 9-251
+\item Поліщук А.В.\hfill --- група 9-321
+\item Іванова О.В.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Чебан В.А.\hfill --- група 9-331
+\item Дубина Н.О.\hfill --- група 9-421
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}}
+
+
+\protocolItem
+{Шувалова~А.К. про нагородження студентів грамотами за активну участь у громадському житті факультету фізики, математики та інформатики.}
+{}
+{звернутися до декана факультету з пропозицією нагородити грамотами за активну участь у громадському житті факультету нижчеперерахованих студентів факультету:
+\begin{multicols}{2}
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item Височенко Г.А.\hfill --- група 9-111
+\item Головачова А.І.\hfill --- група 9-111
+\item Стельмах Ю.О.\hfill --- група 9-111
+\item Овчаренко В.О.\hfill --- група 9-121
+\item Фіалковська Л.В.\hfill --- група 9-121
+\item Тарасюк А.О.\hfill --- група 9-131
+\item Петренко Г.С.\hfill --- група 9-132
+\item Заобурний В.В.\hfill --- група 9-231
+\item Болокан В.А.\hfill --- група 9-241
+\item Шувалов А.К.\hfill --- група 9-241
+\item Гуцу А.М.\hfill --- група 9-251
+\item Анедченко Є.В.\hfill --- група 9-311
+\item Васильцова К.Ю.\hfill --- група 9-311
+\item Зотова Т.С.\hfill --- група 9-321
+\item Кошеварова А.О.\hfill --- група 9-321
+\item Ліфенцова С.Ф.\hfill --- група 9-321
+\item Поліщук А.В.\hfill --- група 9-321
+\item Варава О.О.\hfill --- група 9-331
+\item Воробйов Є.А.\hfill --- група 9-331
+\item Іванова О.В.\hfill --- група 9-331
+\item Левашова К.І.\hfill --- група 9-331
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Чебан В.А.\hfill --- група 9-331
+\item Чернишев Л.Л.\hfill --- група 9-331
+\item Франич А.В.\hfill --- група 9-411
+\item Мельник А.А.\hfill --- група 9-421
+\item Грінченко В.Ю.\hfill --- група 9-431
+\item Ліщук Т.А.\hfill --- група 9-431
+\item Сівцев В.Ю.\hfill --- група 9-431
+\item Ткаченко І.А.\hfill --- група 9-431
+\item Фру С.Н.\hfill --- група 9-431
+\item Варава Г.В.\hfill --- група 9-441
+\item Дубенюк І.О.\hfill --- група 9-441
+\item Ємельяненко С.С.\hfill --- група 9-441
+\item Бахмач Г.О.\hfill --- група 9-141М
+\item Гейнц Г.А.\hfill --- група 9-141М
+\item Мазур А.Ю.\hfill --- група 9-141М
+\item Леус А.В.\hfill --- група 9-211М
+\item Хороняк Т.А.\hfill --- група 9-211М
+\item Щербюк В.С.\hfill --- група 9-211М
+\item Янкова Д.Б.\hfill --- група 9-221М
+\item Шевчук О.М.\hfill --- група 9-241М
+\end{enumerate}
+\end{multicols}
+}
+
+\protocolItem
+{Сенчишена Д.О. про роботу стипендіальної комісії факультету.}
+{}
+{звернутися до декана факультету з пропозицією ввести до складу стипендіальної комісії факультету нижчеперерахованих студентів факультету:
+\smallskip
+
+\noindent\begin{minipage}{0.5\textwidth}
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item Шувалов А.К.\hfill --- група 9-241
+\item Сенчишен Д.О.\hfill --- група 9-331
+\item Чебан В.А.\hfill --- група 9-331
+\end{enumerate}
+\end{minipage}
+}
+
+\bfseries 
+\sign{Голова}{А.К. Шувалов}
+\sign{Секретар}{Д.О. Сенчишен}
+\normalfont
+
+% {\hfill\normalfont\small\itshape /підпис/\hfill\ } 
+%\signEqualProof{01 січня 0001 р.}{Секретар}{Д.О. Сенчишен}
+
+%\writerTel{Сенчишен Денис}{+380\,95\,695\,90\,82}
+\end{document}
+

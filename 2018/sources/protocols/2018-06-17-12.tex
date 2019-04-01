@@ -1,0 +1,643 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+	draft
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=0.5cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+
+% Абзацный отступ
+\parindent=1.25cm
+% ----------------------------------------------------------------------------
+% ---------------------------HEADING------------------------------------------
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ ФІЗИКИ, МАТЕМАТИКИ ТА ІНФОРМАТИКИ
+\parskip=-0.2cm\par\large СТУДЕНТСЬКА РАДА ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+% ----------------------------------------------------------------
+% ---------------------------REQUISITES------------------------------------------
+\newcommand{\Requisites}[4]{\par\noindent
+\begin{minipage}[t]{80mm}
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent\textbf{№#1 від #2}}
+	\end{minipage}
+	\par	
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent #3}	
+	\end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{60mm}
+	\par\noindent #4
+\end{minipage}
+}
+% ---------------------------------------------------------------------
+% ---------------------------PROTOCOL----------------------------------
+\newcommand{\Attendees}[1]{{\par\noindent ПРИСУТНІ: \par #1}}	
+\newcommand{\Invented}[1]{{\par\noindent ЗАПРОШЕНІ: \par #1}}	
+
+\newcommand{\topic}[1]{\item #1}
+\newenvironment{protocolAgenda}
+	{\bigskip\par\noindent ПОРЯДОК ДЕННИЙ:
+		\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex]}
+	{\end{enumerate}}
+	
+\newcommand{\protocolVoting}[3]{
+	\par Результати голосування: <<за>> -- #1; <<проти>> -- #2; <<утримались>> -- #3.}
+
+\newcounter{ProtocolItemizator}
+\setcounter{ProtocolItemizator}{1}
+
+\newcommand{\protocolItem}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\ifthenelse{\equal{#2}{}}{}{\noindent
+	\par\noindent ВИСТУПИЛИ: \par #2}
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+% ---------------------------------------------------------------------
+% ---------------------------SIGNS----------------------------------
+\newcommand{\sign}[2]{
+	\bigskip\par\noindent
+	\begin{minipage}[b]{70mm}#1\end{minipage}	\hfill
+	\begin{minipage}[b]{50mm}#2\end{minipage}	\par	}
+	
+\newcommand{\signEqualProof}[3]{
+	\bigskip\vfill
+	\par\noindent #1
+	\par\noindent Згідно з оригіналом
+	\sign{#2}{#3}\vfill}
+	
+\newcommand{\writerTel}[2]{
+	\vfill\scriptsize\parindent=-0.5mm
+	\par\noindent #1
+	\par\noindent #2}
+% ---------------------------------------------------------------------
+% ---------------------------FOR REQUEST EXTRACT------------------------------
+\newcommand{\groupElement}[6]{\vbox{
+\par\noindent\hrulefill
+\par\noindent {
+\scriptsize На {\footnotesize \textbf{#4}} \hfill з заяви №#1 від #2  \hfill <<#3>> \hfill \textit{Згоден {\tiny /підпис/} Кузьмич~В.І.}}
+\par\noindent \textbf{#5} група: #6}}
+% ----------------------------------------------------------------------------
+% ---------------------------------------------------------------------
+%\usepackage[printwatermark]{xwatermark}
+%\usepackage{xcolor}
+%\usepackage{graphicx}
+%\usepackage{lipsum}
+%\newwatermark[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{ПРОЕКТ}
+
+
+\setlength{\multicolsep}{0ex}
+
+\begin{document}
+\pagestyle{empty}
+\heading
+\Requisites
+{12}
+{17 травня 2018 р.}
+{}{\hfill\bfseries  м. Херсон}
+
+\begin{center}\textbf{ПРОТОКОЛ}\end{center}
+
+\par\noindent Голова: Чебан В.А.
+\par\noindent Секретар: Сенчишен Д.О.
+
+\Attendees{
+Бродовський~А.А.,
+Вовчанчина~Т.І.,
+Дубина~Н.О.,
+Іванова~О.В.,
+Лапік~С.В.,
+Овчаренко~В.О.,
+Полiщук~А.В.,
+Тарасюк~А.О.
+ (10 із 10 членів ради).
+}
+
+\begin{protocolAgenda}
+\topic{Про склад комітетів ради}
+\topic{Про заохочення студентів факультету за участь у громадському житті, культурно\,-\,мистецьких та спортивних заходах, студентському самоврядуванні.}
+\topic{Про роботу стипендіальної комісії факультету.}
+\end{protocolAgenda}
+
+\protocolItem
+{Чебан В.А. про внесення змін до складу комітетів ради.}
+{Поліщук А.В., Варава О.О. з поданнями про склад своїх комітетів.}
+{На виконання рішення ради від 13 квітня 2018 р. за поданнями голів комітетів ввести до складу комітетів наступних студентів факультету: 
+\smallskip
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*)]
+    \begin{minipage}{0.5\textwidth}
+    \item комітету культурно-масової діяльності:
+        \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+        \item Головачова А.І.\hfill --- 111 група;
+        \item Кириленко А.Л.\hfill --- 321 група;
+        \item Сінолуп О.Ю.\hfill --- 321 група;
+        \item Ткаченко І.О.\hfill --- 321 група;
+        \end{enumerate}
+    \end{minipage}
+    
+    \begin{minipage}{0.5\textwidth}
+    \item комітету спортивної діяльності:
+        \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+        \item Карпенко К.В.\hfill --- 121 група;
+        \end{enumerate}
+    \end{minipage}
+
+\end{enumerate}
+
+\noindent призначити Головачову А.І. та Карпенко К.В. заступниками голів відповідних комітетів.
+}
+
+
+\protocolItem
+{Чебан В.А. про заохочення студентів факультету за участь у громадському житті, культурно\,-\,мистецьких та спортивних заходах, студентському самоврядуванні.}
+{Чебан В.А., Іванова О.В., Сенчишен Д.О., Варава О.О., Вовчанчина Т.І., Поліщук~А.В. з списками заходів, що проходили протягом другого семестру 2017-2018~н.р., та переліком студентів факультету, що приймали в них участь.}
+{
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex]
+\item звернутися до декана факультету з пропозицією оголосити подяку студентам факультету, котрі приймали участь у підготовці та проведенні концертних номерів, що ввійшли до програми фестивалю мистецтв <<Молода хвиля --- 2018>> (додаток А);
+\item звернутися до декана факультету з пропозицією оголосити подяку студентам факультету, котрі приймали участь у підготовці та проведенні протягом другого семестру 2017-2018~н.р. факультетських культурно-мистецьких заходів (додаток Б);
+\item звернутися до декана факультету з пропозицією розглянути на засіданні стипендіальної комісії можливість нарахування додаткових балів студентам-членам комітетів студентської ради факультету.
+\end{enumerate}
+
+}
+
+
+
+\protocolItem
+{Сенчишена Д.О. про роботу стипендіальної комісії факультету.}
+{}
+{звернутися до декана факультету з пропозицією ввести до складу стипендіальної комісії факультету нижчеперерахованих студентів факультету:
+\smallskip
+
+\noindent\begin{minipage}{0.5\textwidth}
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex]
+\item Чебан В.А.\hfill --- група 9-331;
+\item Сенчишен Д.О.\hfill --- група 9-331;
+\item Сінолуп О.Ю.\hfill --- група 9-321.
+\end{enumerate}
+\end{minipage}
+}
+
+
+
+\bfseries 
+\sign{Голова}{В.А. Чебан}
+\sign{Секретар}{Д.О. Сенчишен}
+\normalfont
+
+% {\hfill\normalfont\small\itshape /підпис/\hfill\ } 
+%\signEqualProof{01 січня 0001 р.}{Секретар}{Д.О. Сенчишен}
+
+%\writerTel{Сенчишен Денис}{+380\,95\,695\,90\,82}
+\newpage
+\hfill {Додаток А}
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex]
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Onuka>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Височенко Г.А.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Божко О.О.\hfill --- 121 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Човник А.В.\hfill --- 221 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Анедченко Є.В.\hfill --- 311 група;
+\item Бойцов А.В.\hfill --- 331 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Пулінець А.Ю.\hfill --- 331 група;
+\item Кужелюк Н.І.\hfill --- 431 група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Моя любовь>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Соловйова А.О.\hfill --- 121 група;
+\item Батуашвілі Е..\hfill --- 131 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Фру С.Н.\hfill --- 431 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Уличные музыканты>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Височенко Г.А.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Божко О.О.\hfill --- 121 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Соловйова А.О.\hfill --- 121 група;
+\item Батуашвілі Е..\hfill --- 131 група;
+\item Тарасюк А.О.\hfill --- 131 група;
+\item Петренко Г.С.\hfill --- 132 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Заобурний В.В.\hfill --- 231 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Поліщук А.В.\hfill --- 321 група;
+\item Бойцов А.В.\hfill --- 331 група;
+\item Пулінець А.Ю.\hfill --- 331 група;
+\item Кужелюк Н.І.\hfill --- 431 група;
+\item Ємельяненко С.С.\hfill --- 441 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Парк аттракционов>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Височенко Г.А.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Божко О.О.\hfill --- 121 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Соловйова А.О.\hfill --- 121 група;
+\item Батуашвілі Е..\hfill --- 131 група;
+\item Тарасюк А.О.\hfill --- 131 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Човник А.В.\hfill --- 221 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Анедченко Є.В.\hfill --- 311 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Поліщук А.В.\hfill --- 321 група;
+\item Бойцов А.В.\hfill --- 331 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Пулінець А.Ю.\hfill --- 331 група;
+\item Приходько В.В.\hfill --- 411 група;
+\item Мельник А.А.\hfill --- 421 група;
+\item Кужелюк Н.І.\hfill --- 431 група;
+\item Ємельяненко С.С.\hfill --- 441 група;
+\item Мазур А.Ю.\hfill --- 141М група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\item Янкова Д.Б.\hfill --- 221М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Цунамі>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Човник А.В.\hfill --- 221 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Анедченко Є.В.\hfill --- 311 група;
+\item Бойцов А.В.\hfill --- 331 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Ємельяненко С.С.\hfill --- 441 група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\item Янкова Д.Б.\hfill --- 221М група;
+\end{enumerate}
+\end{multicols}
+
+\newpage
+\item 
+\begin{multicols}{2}[Учасники творчого колективу <<Театр тіней>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Головачова А.І.\hfill --- 111 група;
+\item Лукавий С.В.\hfill --- 111 група;
+\item Магурян Н.Д.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Фіалковська Л.В.\hfill --- 121 група;
+\item Тарасюк А.О.\hfill --- 131 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Чебан В.А.\hfill --- 331 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники фінального номеру:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Бельза К.М.\hfill --- 111 група;
+\item Височенко Г.А.\hfill --- 111 група;
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Божко О.О.\hfill --- 121 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Овдійчук М.С.\hfill --- 121 група;
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Соловйова А.О.\hfill --- 121 група;
+\item Батуашвілі Е..\hfill --- 131 група;
+\item Капустніков Л.С.\hfill --- 131 група;
+\item Тарасюк А.О.\hfill --- 131 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Човник А.В.\hfill --- 221 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Анедченко Є.В.\hfill --- 311 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Поліщук А.В.\hfill --- 321 група;
+\item Бойцов А.В.\hfill --- 331 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Пулінець А.Ю.\hfill --- 331 група;
+\item Мельник А.А.\hfill --- 421 група;
+\item Кужелюк Н.І.\hfill --- 431 група;
+\item Ємельяненко С.С.\hfill --- 441 група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\end{enumerate}
+\end{multicols}
+
+
+
+\item 
+\begin{multicols}{2}[Студенти, котрі приймали участь в загальній організації та супроводі фестивалю:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Благій А.І.\hfill --- 141 група;
+\item Романенко В.М.\hfill --- 141 група;
+\item Заобурний В.В.\hfill --- 231 група;
+\item Калитюк П.П.\hfill --- 231 група;
+\item Кириленко А.Л.\hfill --- 321 група;
+\item Поліщук А.В.\hfill --- 321 група;
+\item Сінолуп О.Ю.\hfill --- 321 група;
+\item Ткаченко І.О.\hfill --- 321 група;
+\item Варава О.О.\hfill --- 331 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Нагачевський А.О.\hfill -- 331 група;
+\item Сенчишен Д.О.\hfill --- 331 група;
+\item Чебан В.А.\hfill --- 331 група;
+\item Тарасов Р.І.\hfill --- 411 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\item Щербюк В.С.\hfill --- 211М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники гала-концерту фестивалю:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Гошкович С.В.\hfill --- 121 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Мельник А.А.\hfill --- 421 група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\item Янкова Д.Б.\hfill --- 221М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Танец со стульями>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Гошкович С.В.\hfill --- 121 група;
+\item Анедченко Є.В.\hfill --- 311 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Іванова О.В.\hfill --- 331 група;
+\item Мельник А.А.\hfill --- 421 група;
+\item Хороняк Т.А.\hfill --- 211М група;
+\item Янкова Д.Б.\hfill --- 221М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Дуэт>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Іванова О.В.\hfill --- 331 група;
+\item Ємельяненко С.С.\hfill --- 441 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники номеру <<Не ты, не я>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Ліфенцова С.Ф.\hfill --- 321 група;
+\item Фру С.Н.\hfill --- 431 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Закадровий голос:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Тарасюк А.О.\hfill --- 131 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасник номеру <<Обезоружена>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Ліфенцова С.Ф.\hfill --- 321 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасник номеру <<Антарктида>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Іванова О.В.\hfill --- 331 група;
+\end{enumerate}
+\end{multicols}
+
+
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\small
+\hfill Додаток Б
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex]
+
+
+\item 
+\begin{multicols}{2}[Учасники ходи в честь Мельпомени Таврії:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Божко О.О.\hfill --- 121 група;
+\item Борисова О.С.\hfill --- 121 група;
+\item Гошкович С.В.\hfill --- 121 група;
+\item Карпенко К.В.\hfill --- 121 група;
+\item Ковальчук О.О.\hfill --- 121 група;
+\item Литвиненко С.В.\hfill --- 121 група;
+\item Тімченко М.О.\hfill --- 121 група;
+\item Цьот А.В.\hfill --- 121 група;
+\item Воропаєва І.В.\hfill --- 141 група;
+\item Леденчук С.В.\hfill --- 241 група;
+\item Нагорний П.І.\hfill --- 241 група;
+\item Соболь М.В.\hfill --- 241 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Кириленко А.Л.\hfill --- 321 група;
+\item Кошеварова А.О.\hfill --- 321 група;
+\item Поліщук А.В.\hfill --- 321 група;
+\item Сінолуп О.Ю.\hfill --- 321 група;
+\item Ткаченко І.О.\hfill --- 321 група;
+\item Нагачевський А.О.\hfill -- 331 група;
+\item Пулінець А.Ю.\hfill --- 331 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники відбіркового етапу турніру <<Що? Де? Коли?>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Човник А.В.\hfill --- 221 група;
+\item Заобурний В.В.\hfill --- 231 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Сінолуп О.Ю.\hfill --- 321 група;
+\item Воробйов Є.А.\hfill --- 331 група;
+\item Левашова К.І.\hfill --- 331 група;
+\item Сенчишен Д.О.\hfill --- 331 група;
+\item Шапарьов О.Ю.\hfill --- 331 група;
+\item Грінченко В.Ю.\hfill --- 431 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники першого факультетського етапу турніру <<Що? Де? Коли?>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Човник А.В.\hfill --- 221 група;
+\item Заобурний В.В.\hfill --- 231 група;
+\item Шувалов А.К.\hfill --- 241 група;
+\item Сінолуп О.Ю.\hfill --- 321 група;
+\item Воробйов Є.А.\hfill --- 331 група;
+\item Левашова К.І.\hfill --- 331 група;
+\item Сенчишен Д.О.\hfill --- 331 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Організатори та ведучі випускного для 241м групи:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Сосевич О.В.\hfill --- 111 група;
+\item Зотова Т.С.\hfill --- 321 група;
+\item Спасьонова Т.Ю.\hfill --- 321 група;
+\item Сенчишен Д.О.\hfill --- 331 група;
+\item Чебан В.А.\hfill --- 331 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Організатори та ведучі випускного для 211м, 221м, 231м груп:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Стельмах Ю.О.\hfill --- 111 група;
+\item Тарасюк А.О.\hfill --- 131 група;
+\item Бродовський А.А.\hfill --- 141 група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Ткаченко І.О.\hfill --- 321 група;
+\item Варава О.О.\hfill --- 331 група;
+\item Сенчишен Д.О.\hfill --- 331 група;
+\item Чебан В.А.\hfill --- 331 група;
+\item Панова К.О.\hfill --- 341 група;
+\item Фру С.Н.\hfill --- 431 група;
+\item Дубенюк І.О.\hfill --- 441 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники заходу <<Кам'яна січ>>:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники Універсіади:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Варава О.О.\hfill --- 331 група;
+\item Чебан В.А.\hfill --- 331 група;
+\item Франич А.В.\hfill --- 411 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники волонтерського заходу на факультеті:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Барболіна А.С.\hfill --- 121 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники заходу до 9 травня:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Овдійчук М.С.\hfill --- 121 група;
+\item Тімченко М.О.\hfill --- 121 група;
+\item Гейнц Г.А.\hfill --- 141М група;
+\item Лапік С.В.\hfill --- 221 група;
+\item Корзун В.В.\hfill --- 241 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники суботнику від факультету:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Овчаренко В.О.\hfill --- 121 група;
+\item Тімченко М.О.\hfill --- 121 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники випуску СтудТВ <<Конференція STEM-освіти>> 27.04.2018:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Козюра М.С.\hfill --- 141 група;
+\item Козюра О.С.\hfill --- 141 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники випуску СтудТВ <<STEM-школа>> 25.05.2018:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Козюра М.С.\hfill --- 141 група;
+\item Козюра О.С.\hfill --- 141 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасники випуску СтудТВ <<Вибори декана факультету>> 04.05.2018:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Козюра М.С.\hfill --- 141 група;
+\item Козюра О.С.\hfill --- 141 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасник міжуніверситетських змагань з волейболу:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Чебан В.А.\hfill --- 331 група;
+\end{enumerate}
+\end{multicols}
+
+\item 
+\begin{multicols}{2}[Учасник виступу протягом перерви на науковій конференції:] 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex,label=\arabic*.]
+\item Ліфенцова С.Ф.\hfill --- 321 група;
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+	draft
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=1cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+
+% Абзацный отступ
+\parindent=1.25cm
+% ----------------------------------------------------------------------------
+% ---------------------------HEADING------------------------------------------
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ ФІЗИКИ, МАТЕМАТИКИ ТА ІНФОРМАТИКИ
+\parskip=-0.2cm\par\large СТУДЕНТСЬКА РАДА ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+% ----------------------------------------------------------------
+% ---------------------------REQUISITES------------------------------------------
+\newcommand{\Requisites}[4]{\par\noindent
+\begin{minipage}[t]{80mm}
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent\textbf{№#1 від #2}}
+	\end{minipage}
+	\par	
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent #3}	
+	\end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{60mm}
+	\par\noindent #4
+\end{minipage}
+}
+% ---------------------------------------------------------------------
+% ---------------------------PROTOCOL----------------------------------
+\newcommand{\Attendees}[1]{{\par\noindent ПРИСУТНІ: \par #1}}	
+\newcommand{\Invented}[1]{{\par\noindent ЗАПРОШЕНІ: \par #1}}	
+
+\newcommand{\topic}[1]{\item #1}
+\newenvironment{protocolAgenda}
+	{\bigskip\par\noindent ПОРЯДОК ДЕННИЙ:
+		\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]}
+	{\end{enumerate}}
+	
+\newcommand{\protocolVoting}[3]{
+	\par Результати голосування: <<за>> -- #1; <<проти>> -- #2; <<утримались>> -- #3.}
+
+\newcounter{ProtocolItemizator}
+\setcounter{ProtocolItemizator}{1}
+
+\newcommand{\protocolItem}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\ifthenelse{\equal{#2}{}}{}{\noindent
+	\par\noindent ВИСТУПИЛИ: \par #2}
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+% ---------------------------------------------------------------------
+% ---------------------------SIGNS----------------------------------
+\newcommand{\sign}[2]{
+	\bigskip\par\noindent
+	\begin{minipage}[b]{70mm}#1\end{minipage}	\hfill
+	\begin{minipage}[b]{50mm}#2\end{minipage}	\par	}
+	
+\newcommand{\signEqualProof}[3]{
+	\bigskip\vfill
+	\par\noindent #1
+	\par\noindent Згідно з оригіналом
+	\sign{#2}{#3}\vfill}
+	
+\newcommand{\writerTel}[2]{
+	\vfill\scriptsize\parindent=-0.5mm
+	\par\noindent #1
+	\par\noindent #2}
+% ---------------------------------------------------------------------
+% ---------------------------FOR REQUEST EXTRACT------------------------------
+\newcommand{\groupElement}[6]{\vbox{
+\par\noindent\hrulefill
+\par\noindent {
+\scriptsize На {\footnotesize \textbf{#4}} \hfill з заяви №#1 від #2  \hfill <<#3>> \hfill \textit{Згоден {\tiny /підпис/} Кузьмич~В.І.}}
+\par\noindent \textbf{#5} група: #6}}
+% ----------------------------------------------------------------------------
+% ---------------------------------------------------------------------
+
+\begin{document}
+\heading
+\Requisites
+{2}
+{07 серпня 2017 г.}
+{}{}
+
+\begin{center}\textbf{ПРОТОКОЛ}\end{center}
+
+\par\noindent Т.в.о. голови: Іванова О.В.
+\par\noindent Секретар: Сенчишен Д.О.
+
+\Attendees{
+Грiнченко~В.Ю.,
+Давидок~О.Ю.,
+Дубина~Н.О.,
+Зотова~Т.С.,
+Карпенко~С.Ю.,
+Ліщук~Т.А.,
+Мец~А.І.,
+Полiщук~А.В.,
+Чебан~В.А.
+(11 із 11).}
+
+%\Invented{
+%Ткаченко Інна.
+%}
+
+\begin{protocolAgenda}
+\topic{Про рекомендацію кандидатур студентів для переведення на навчання за кошти державного бюджету.}
+\end{protocolAgenda}
+
+\protocolItem
+{Іванову О.В. про рекомендацію кандидатур студентів для переведення на навчання за кошти державного бюджету.
+}
+{Іванова О.В. запропонувала рекомендувати студентку 3 курсу 321 групи денної форми навчання контрактної форми фінансування Сінолуп О.Ю. (спеціальність 6.040201 <<Математика*>>, спеціалізація <<Інформатика>>) для переведення на навчання за кошти державного бюджету.
+
+Студентка приймаює активну участь у громадському житті факультету, підтримують та збагачують його освітній та культурний рівні. Є членом факультетської команди <<Що? Де? Коли?>>.
+}
+{Підтримати кандидатуру студентки 321 групи Сінолуп О.Ю. для переведення на навчання за кошти державного бюджету.
+\protocolVoting{11}{0}{0}
+}
+
+\bfseries 
+\sign{Т.в.о. голови}{Іванова О.В.}
+\sign{Секретар}{Сенчишен Д.О.}
+\normalfont
+
+% {\hfill\normalfont\small\itshape /підпис/\hfill\ } 
+%\signEqualProof{01 січня 0001 р.}{Секретар}{Сенчишен Д.О.}
+
+%\writerTel{Сенчишен Денис}{+380\,95\,695\,90\,82}
+\end{document}
+

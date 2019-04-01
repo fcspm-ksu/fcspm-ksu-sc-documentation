@@ -1,0 +1,159 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+	draft
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=1cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+%%%
+%\usepackage[printwatermark]{xwatermark}
+%\usepackage{xcolor}
+%\newwatermark[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{ПРОЕКТ}
+%%%
+% Абзацный отступ
+\parindent=1.25cm
+% ----------------------------------------------------------------------------
+% ---------------------------HEADING------------------------------------------
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ ФІЗИКИ, МАТЕМАТИКИ ТА ІНФОРМАТИКИ
+\parskip=-0.2cm\par\large КОНФЕРЕНЦІЯ СТУДЕНТІВ ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+% ----------------------------------------------------------------
+% ---------------------------REQUISITES------------------------------------------
+\newcommand{\Requisites}[4]{\par\noindent
+\begin{minipage}[t]{80mm}
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent\textbf{№#1 від #2}}
+	\end{minipage}
+	\par	
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent #3}	
+	\end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{60mm}
+	\par\noindent #4
+\end{minipage}
+}
+% ---------------------------------------------------------------------
+% ---------------------------PROTOCOL----------------------------------
+\newcommand{\Attendees}[1]{{\par\noindent ПРИСУТНІ: \par #1}}	
+\newcommand{\Invented}[1]{{\par\noindent ЗАПРОШЕНІ: \par #1}}	
+
+\newcommand{\topic}[1]{\item #1}
+\newenvironment{protocolAgenda}
+	{\bigskip\par\noindent ПОРЯДОК ДЕННИЙ:
+		\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]}
+	{\end{enumerate}}
+	
+\newcommand{\protocolVoting}[3]{
+	\par Результати голосування: <<за>> -- #1; <<проти>> -- #2; <<утримались>> -- #3.}
+
+\newcounter{ProtocolItemizator}
+\setcounter{ProtocolItemizator}{1}
+
+\newcommand{\protocolItem}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\ifthenelse{\equal{#2}{}}{}{\noindent
+	\par\noindent ВИСТУПИЛИ: \par #2}
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+% ---------------------------------------------------------------------
+% ---------------------------SIGNS----------------------------------
+\newcommand{\sign}[2]{
+	\bigskip\par\noindent
+	\begin{minipage}[b]{70mm}#1\end{minipage}	\hfill
+	\begin{minipage}[b]{50mm}#2\end{minipage}	\par	}
+	
+\newcommand{\signEqualProof}[3]{
+	\bigskip\vfill
+	\par\noindent Згідно з оригіналом
+	\sign{#2}{#3}
+	\par\noindent #1\vfill}
+	
+\newcommand{\writerTel}[2]{
+	\vfill\scriptsize\parindent=-0.5mm
+	\par\noindent #1
+	\par\noindent #2}
+% ---------------------------------------------------------------------
+% ---------------------------FOR REQUEST EXTRACT------------------------------
+\newcommand{\groupElement}[6]{\vbox{
+\par\noindent\hrulefill
+\par\noindent {
+\scriptsize На {\footnotesize \textbf{#4}} \hfill з заяви №#1 від #2  \hfill <<#3>> \hfill \textit{Згоден {\tiny /підпис/} Кузьмич~В.І.}}
+\par\noindent \textbf{#5} група: #6}}
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+%\usepackage{datetime}
+% ---------------------------------------------------------------------
+
+\begin{document}
+\thispagestyle{empty}
+\heading
+\Requisites
+{4}
+{03 квітня 2018 р.}
+{}{\hfill\bfseries  м. Херсон}
+
+\begin{center}\textbf{ВИТЯГ З ПРОТОКОЛУ}\end{center}
+
+\par\noindent Голова: Ліщук Т.А.
+\par\noindent Секретар: Сенчишен Д.О.
+
+\Attendees{
+студенти денної форми навчання факультету у кількості 54 із 347.}
+
+
+\Invented{
+\par заступник декана факультету з ОВРП Черненко І.Є.
+}
+
+\setcounter{ProtocolItemizator}{2}
+\begin{protocolAgenda}
+\topic[2.]{Про вибори голови студентської ради факультету на 2017"--~2018 н.р.}
+\end{protocolAgenda}
+
+
+\protocolItem
+{Ліщук Т.А. про вибори голови студентської ради факультету.
+}
+{Чебан В.А. з доповіддю\,--\,презентацією.
+}
+{
+за результатами голосування головою студентської ради факультету призначити Чебан Вікторію Андріївну, студентку 331 групи 3 курсу денної форми навчання.
+
+\protocolVoting{53}{1}{0}
+}
+
+\bfseries 
+\sign{Голова{\hfill\normalfont\small\itshape /підпис/}}{Т.А. Ліщук}
+\sign{Секретар{\hfill\normalfont\small\itshape /підпис/}}{Д.О. Сенчишен}
+\normalfont
+
+% {\hfill\normalfont\small\itshape /підпис/\hfill\ } 
+\signEqualProof{04 квітня 2018 р.}{Секретар студентської\\ ради факультету}{Д.О. Сенчишен}
+
+\end{document}
+

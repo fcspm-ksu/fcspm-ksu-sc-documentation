@@ -1,0 +1,207 @@
+\documentclass[
+	a4paper,
+	12pt,
+	oneside,
+	%draft
+]{extreport}
+
+% Кодировка, шрифты и языки
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian,ukrainian]{babel}
+
+% Лист и структура
+\usepackage[a4paper, top=1cm, bottom=1cm, left=3cm, right=1cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% Разное
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{lipsum}
+
+% Абзацный отступ
+\parindent=1.25cm
+% ----------------------------------------------------------------------------
+% ---------------------------HEADING------------------------------------------
+\newcommand{\heading}{\begin{center}
+\parindent=0cm\parskip=-0.1cm\bfseries\footnotesize
+\par МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ
+\par ХЕРСОНСЬКИЙ ДЕРЖАВНИЙ УНІВЕРСИТЕТ
+\par ФАКУЛЬТЕТ ФІЗИКИ, МАТЕМАТИКИ ТА ІНФОРМАТИКИ
+\parskip=-0.2cm\par\large СТУДЕНТСЬКА РАДА ФАКУЛЬТЕТУ
+\par\hrule width \hsize height 1mm \kern 0.25mm \hrule width \hsize height 0.25mm
+\end{center}}
+% ----------------------------------------------------------------
+% ---------------------------REQUISITES------------------------------------------
+\newcommand{\Requisites}[4]{\par\noindent
+\begin{minipage}[t]{80mm}
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent\textbf{№#1 від #2}}
+	\end{minipage}
+	\par	
+	\begin{minipage}[t]{\textwidth}
+		{\par\noindent #3}	
+	\end{minipage}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{60mm}
+	\par\noindent #4
+\end{minipage}
+}
+% ---------------------------------------------------------------------
+% ---------------------------PROTOCOL----------------------------------
+\newcommand{\Attendees}[1]{{\par\noindent ПРИСУТНІ: \par #1}}	
+\newcommand{\Invented}[1]{{\par\noindent ЗАПРОШЕНІ: \par #1}}	
+
+\newcommand{\topic}[1]{\item #1}
+\newenvironment{protocolAgenda}
+	{\bigskip\par\noindent ПОРЯДОК ДЕННИЙ:
+		\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]}
+	{\end{enumerate}}
+	
+\newcommand{\protocolVoting}[3]{
+	\par Результати голосування: <<за>> -- #1; <<проти>> -- #2; <<утримались>> -- #3.}
+
+\newcounter{ProtocolItemizator}
+\setcounter{ProtocolItemizator}{1}
+
+\newcommand{\protocolItem}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\ifthenelse{\equal{#2}{}}{}{\noindent
+	\par\noindent ВИСТУПИЛИ: \par #2}
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+\newcommand{\protocolItemV}[3]{
+	\bigskip
+	\par\noindent \Roman{ProtocolItemizator}. СЛУХАЛИ:\par #1 
+	\par\noindent ВИСТУПИЛИ: \par #2
+	\par\noindent УХВАЛИЛИ:\par #3
+	\stepcounter{ProtocolItemizator}}
+% ---------------------------------------------------------------------
+% ---------------------------SIGNS----------------------------------
+\newcommand{\sign}[2]{
+	\bigskip\par\noindent
+	\begin{minipage}[b]{70mm}#1\end{minipage}	\hfill
+	\begin{minipage}[b]{50mm}#2\end{minipage}	\par	}
+	
+\newcommand{\signEqualProof}[3]{
+	\bigskip\vfill
+	\par\noindent #1
+	\par\noindent Згідно з оригіналом
+	\sign{#2}{#3}\vfill}
+	
+\newcommand{\writerTel}[2]{
+	\vfill\scriptsize\parindent=-0.5mm
+	\par\noindent #1
+	\par\noindent #2}
+% ---------------------------------------------------------------------
+% ---------------------------------------------------------------------
+
+\begin{document}
+\pagestyle{empty}
+\heading
+\Requisites
+{11}
+{24 квітня 2018 р.}
+{}{\hfill\bfseries  м. Херсон}
+
+\begin{center}\textbf{ПРОТОКОЛ}\end{center}
+
+\par\noindent Голова: Чебан В.А.
+\par\noindent Секретар: Сенчишен Д.О.
+
+\Attendees{
+%Бродовський~А.А.,
+Вовчанчина~Т.І.,
+%Головачова~А.І.,
+%Дубина~Н.О.,
+Іванова~О.В.,
+Лапік~С.В.,
+%Ліщук~Т.А.,
+Овчаренко~В.О.,
+Полiщук~А.В.%,
+%Тарасюк~А.О.
+ (7 із 10 членів ради).
+}
+
+%\Invented{
+%}
+
+\begin{protocolAgenda}
+\topic{Про делегування повноважень.}
+\topic{Про роботу ради.}
+\topic{Про результати проведення фестивалю <<Молода хвиля>>.}
+\topic{Про заплановані заходи та нагальні питання.}
+\end{protocolAgenda}
+
+
+
+
+\protocolItem
+{Чебан В.А. про делегування повноважень.}
+{}
+{
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex, label={\arabic*.}]
+\item З метою забезпечення оперативної роботи ради делегувати Сенчишену~Д.О. невиключне право погоджувати та підписувати від імені студентського самоврядування факультету всі види документів, право погоджувати та підписувати які має голова ради.
+\item Сенчишену Д.О. невідкладно звітувати перед радою про всі прийняті таким чином рішення.
+\end{enumerate}
+\protocolVoting{7}{0}{0}
+}
+
+
+\protocolItem
+{Чебан В.А. про роботу ради.}
+{Поліщук А.В., Іванова О.В. з окремими пропозиціями.}
+{
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex, label={\arabic*.}]
+\item Залишити відкритим питання про комітет здоров'я, доцільність його утворення або підпорядкування іншим комітетам (зокрема, комітету спортивної діяльності).
+\item Головам комітетів підготувати списки фактичних членів комітетів.
+\item Питання про наповнення комітетів представниками \textit{всіх} академічних груп факультету відкласти до початку наступного навчального року.
+\item Підготувати коробку для макулатури до кінця тижня.
+\end{enumerate} 
+}
+
+\protocolItem
+{Поліщук А.В., Іванову О.В. про результати проведення фестивалю <<Молода хвиля>>.}
+{Поліщук А.В., Іванова О.В. про участь студентів, зокрема випускних курсів, у заході та затрати на його проведення.}
+{інформацію прийняти до відома.
+}
+
+\pagebreak
+\protocolItemV
+{Чебан В.А. про заплановані заходи та нагальні питання.}
+{Члени ради з  інформацією про заплановані заходи у цілому та окремі нагальні питання. Радою обговорено наступне:
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex, label={\arabic*)}]
+\item випускні (підготовка та нагородження випускників~--- грамоти, статуетки тощо);
+\item можливість налагодження принтера;
+\item <<Козацький гарт>>:
+\item стан костюмерної, доцільність опису наявних речей;
+\item гала-концерт фестивалю мистецтв <<Молода хвиля>>;
+\item підготовку відеоролика про факультет;
+\item музей факультету;
+\item <<10 фактів про факультет>> для інформаційного буклету;
+\item проходження студентами профілактичних медичних оглядів;
+\item обладнання окремих кабінетів додатковими електророзетками.
+\end{enumerate}
+}
+{
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=0ex,parsep=1ex, label={\arabic*)}]
+\item інформацію прийняти до відома;
+\item Сенчишену Д.О. підготувати списки всіх студентів факультету та студент\textit{ок} окремо;
+\item Чебан В.А. отримати Положення про студентське самоврядування ХДУ у вищих органів самоврядування;
+\item чергове засідання провести на початку наступного тиждня.
+\end{enumerate}
+}
+
+
+\bfseries 
+\sign{Голова}{В.А. Чебан}
+\sign{Секретар}{Д.О. Сенчишен}
+\normalfont
+
+\end{document}
+
